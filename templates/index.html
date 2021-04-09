@@ -3,25 +3,22 @@
 
 {% block content %}
     <div class="container">
-        <h1>Wiki Searcher</h1>
+        <a href="{{ url_for("home") }}"><h1>Wiki Searcher</h1></a>
     </div>
 
     <div class="main">
-        <form action="#" method="POST">
-            <input name="search" id="search" type="text" placeholder="Search" {% if search %}value={{ search }}{% endif %} required>
+        <form method="GET">
+            <input name="search" id="search" type="text" placeholder="Search" value="{{ search }}" required>
             <button id="submit" type="submit"><span class="material-icons">search</span></button>
-            <br><br>
+            <!--<br><br>
             <label for="can_suggestion">Suggestion</label>
-            <input id="can_suggestion" name="can_suggestion" type="checkbox" {% if can_suggestion == "on" %}checked{% endif %}>
+            <input id="can_suggestion" name="can_suggestion" type="checkbox" {% if can_suggestion == "on" %}checked{% endif %}>-->
         </form>
 
         <div class="results">
             {% if results %}
                 {% for result in results %}
-                    <div class="result">
-                        <h3>{{ result[0] }}</h3>
-                        <h5>{{ result[2] }}</h5>
-                    </div>
+                    {% include "assets/result.html" %}
                 {% endfor %}
             {% endif %}
         </div>

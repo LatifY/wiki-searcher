@@ -1,7 +1,7 @@
 <!--FLASK TEMPLATE BY LATIF YILMAZ-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,13 +22,15 @@
 </head>
 <body>
     {% include "assets/messages.html" %}
-    
-    {% block content %}
-    {% endblock %}
+    <div id="page-container">
+        <div id="content-wrap">
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% include "assets/footer.html" %}
+    </div>
 
-    {% include "assets/footer.html" %}
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    <script src="{{ url_for("static", filename="js/index.js") }}"></script>
 </body>
 </html>
