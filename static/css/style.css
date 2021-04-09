@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    background-color: #fff;
+    outline: none;  
+}
+
+/*#region Footer*/
+.footerWrap {
+    width:100%;
+    position:fixed;
+    text-align: left;
+    bottom: 0px;
+    background: transparent;
+}
+.footer {
+    width:400px;
+    margin:left;
+}
+.footerContent {
+    float:left;
+    width:100%;
+}
+
+.footerContent h5{
+    padding: 0px;
+    margin: 5px;
+}
+
+.footerContent a:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+/*#endregion Footer*/
+
+.container{
+    margin-top: 80px;
+    text-align: center;
+    
+    justify-content: center;
+    align-items: center;
+}
+
+.container h1{
+    font-size: 80px;
+}
+
+.main{
+    margin-top: 50px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.main .results{
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom:80px;
+}
+
+.main .results .result{
+    margin-top: 50px;
+    text-align: left;
+    width: 100%;
+    height: 50px;
+}
+
+.main .results .result{
+    padding: 15px;
+}
+
+/*#region CheckBox*/
+   label {
+    font-size: 14px;
+    transition: all 0.5s ease-in-out;
+    cursor: text;
+    color: #3a3a3a;
+  }
+  
+  input[type="checkbox"] {
+    -webkit-appearance: none;
+        border: 1px solid #077971;
+    width: 30px;
+    height: 18px;
+    position: relative;
+    border-radius: 34px;
+    transition: all 0.35s;
+  }
+  
+  input[type="checkbox"]:checked {
+    border: 1px solid #777;
+  }
+  input[type="checkbox"]:focus {
+    outline: none;
+  }
+  input[type="checkbox"]::before {
+    content: " ";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    opacity: 1;
+    transform: translateX(12px);
+    background: #077971;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.35s, opacity 0.5s;
+    transform-origin: center center;
+    border-radius: 50%;
+  }
+  input[type="checkbox"]:checked::before {
+    background: #aaa;
+    transform: translateX(0);
+  }
+
+  input[type="checkbox"]:hover,
+  input[type="checkbox"] ~ label {
+    cursor: pointer;
+  }
+/*#endregion*/
+
+#search{
+  border: 2px solid #077971;
+  border-radius: 30px;
+  height: 32px;
+  font-size: 15px;
+  color: #3D3D3C;
+  font-weight: 400;
+  padding-left: 15px;
+  padding-right: 20px;
+}
+
+#submit{
+    background-color: transparent;
+    border-color: transparent;
+    font-size: 18px;
+    color: #01A093;
+    position: relative;
+    right: 44px;
+    top: 6px;
+    cursor: pointer;
+    
+}
+
+.error{
+    display: block;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.info-message{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+  
+    background-color: #0dac27;
+    padding: 15px;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+  
+    transition: 300ms all;
+    transform-origin: top right;
+    animation: flash-message 0.6s, disappear 4s forwards;
+}
+
+.warning-message{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+  
+    background-color: #cf0520;
+    padding: 15px;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+  
+    transition: 300ms all;
+    transform-origin: top right;
+    animation: flash-message 0.6s, disappear 4s forwards;
+}
+
+@keyframes flash-message {
+    from {transform: translateY(-60px);}
+    to {transform: translateY(0px);}
+  }
+
+@keyframes disappear{
+    0% {opacity: 1;}
+    80% {opacity: 1;}
+    100% {opacity: 0; display: none;}
+}
+
+/*#region Responsive-600*/
+@media only screen and (max-width: 600px) {
+    .container h1{
+        font-size: 60px;
+    }
+
+    .main .results{
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .container h1{
+        font-size: 40px;
+    }
+    
+    .footerWrap{
+        font-size: 15px;
+        text-align: center;
+    }
+
+}
+/*#endregion Responsive-600*/
