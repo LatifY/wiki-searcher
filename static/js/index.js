@@ -14,6 +14,7 @@ theme.addEventListener("click", function() {
   else{
     darkmode();
   }
+  location.reload();
 });
 
 function darkmode() {

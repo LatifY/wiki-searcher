@@ -7,18 +7,29 @@ app.config['SECRET_KEY'] = "key"
 
 class Result:
     title:str
-    content="deneme"
     summary:str
+
     def __init__(self, title, summary):
         self.title = title
         self.summary = summary
 
-    def editContent(self,content):
-        self.content = content
+    def toDict(self):
+        _dict = {"title":self.title, "summary":self.summary}
+        return _dict
 
-    def toArray(self):
-        lst = [self.title,self.content,self.summary]
-        return lst
+class Page:
+    title:str
+    content:str
+    image:str
+
+    def __init__(self,title,content,image):
+        self.title = title
+        self.content = content
+        self.image = image
+
+    def toDict(self):
+        _dict = {"title":self.title, "content":self.content, "image":self.image}
+        return _dict
 
 @app.route("/", methods=["GET","POST"])
 def home():
@@ -33,12 +44,17 @@ def home():
                 summary = wikipedia.summary(r, auto_suggest=False)
                 if len(summary) > 200: summary = summary[:200]
                 result = Result(r,summary)
-                results.append(result.toArray())
+                results.append(result.toDict())
             except:
                 print(f"Couldnt find any result for {r}")
 
         return render_template('index.html', search=search,results=results)
     return render_template('index.html')
+
+@app.route("/page/<query>")
+def page(query):
+    page = wikipedia.page(query)
+    return render_template("page.html")
 
 @app.errorhandler(404)
 def page_not_found(error):

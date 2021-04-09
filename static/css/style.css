@@ -4,24 +4,17 @@
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     background-color: #fff;
-    outline: none;  
+    outline: none;
+    position: relative;
 }
 
 #page-container {
     position: relative;
-    min-height: 100vh;
 }
 
 #content-wrap {
     padding-bottom: 2.5rem;
-    margin-bottom: 50px;
-}
-
-#footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;
+    margin-bottom: 70px;
 }
 
 a{
@@ -41,6 +34,7 @@ a:hover{
     position:fixed;
     bottom: 0px;
     background: transparent;
+    height: 3.5rem;
 }
 
 
@@ -79,6 +73,7 @@ a:hover{
 }
 /*#endregion Footer*/
 
+/*#region Container*/
 .container{
     margin-top: 80px;
     text-align: center;
@@ -89,8 +84,30 @@ a:hover{
 
 .container h1{
     font-size: 80px;
+    transition: .25s linear;
 }
 
+h1 > a:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: #0cb3a7;
+    visibility: hidden;
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: .25s linear;
+  }
+  h1 > a:hover:before,
+  h1 > a:focus:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+/*#endregion Container*/
+
+/*#region Main*/
 .main{
     margin-top: 20px;
     text-align: center;
@@ -98,74 +115,33 @@ a:hover{
     align-items: center;
 }
 
-.main .results{
+.results{
     width: 600px;
     margin: 0 auto;
     margin-bottom:80px;
 }
 
-.main .results .result{
+.results .result{
     margin-top: 50px;
     text-align: left;
     width: 100%;
     height: 50px;
 }
 
-.main .results .result{
+.results .result{
     padding: 15px;
 }
 
-/*#region CheckBox*/
-   label {
-    font-size: 14px;
-    transition: all 0.5s ease-in-out;
-    cursor: text;
-    color: #3a3a3a;
-  }
-  
-  input[type="checkbox"] {
-    -webkit-appearance: none;
-        border: 1px solid #077971;
-    width: 30px;
-    height: 18px;
-    position: relative;
-    border-radius: 34px;
-    transition: all 0.35s;
-  }
-  
-  input[type="checkbox"]:checked {
-    border: 1px solid #777;
-  }
-  input[type="checkbox"]:focus {
-    outline: none;
-  }
-  input[type="checkbox"]::before {
-    content: " ";
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    opacity: 1;
-    transform: translateX(12px);
-    background: #077971;
-    top: 2px;
-    left: 2px;
-    transition: transform 0.35s, opacity 0.5s;
-    transform-origin: center center;
-    border-radius: 50%;
-  }
-  input[type="checkbox"]:checked::before {
-    background: #aaa;
-    transform: translateX(0);
-  }
+.result .title{
+    transition: 100ms all;
+    color: #0cb3a7;
+}
 
-  input[type="checkbox"]:hover,
-  input[type="checkbox"] ~ label {
-    cursor: pointer;
-  }
 /*#endregion*/
 
+
 #search{
-  border: 2px solid #077971;
+  border: 2px solid #0cb3a7;
   border-radius: 30px;
   height: 32px;
   font-size: 15px;
@@ -269,6 +245,6 @@ a:hover{
     .footerWrap{
         font-size: 13px;
     }
-
+    
 }
 /*#endregion Responsive-600*/
