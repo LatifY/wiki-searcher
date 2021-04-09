@@ -1,4 +1,4 @@
 <div class="result">
-    <a href=""><h3 class="title">{{ result["title"] }}</h3></a>
+    <a href="{{ url_for("page", query=result['title']) }}"><h3 class="title">{{ result["title"] }}</h3></a>
     <h5 class="summary">{{ result["summary"] }}...</h5>
 </div>

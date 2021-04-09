@@ -22,7 +22,7 @@ class Page:
     content:str
     image:str
 
-    def __init__(self,title,content,image):
+    def __init__(self,title,content, image= "https://via.placeholder.com/350x150"):
         self.title = title
         self.content = content
         self.image = image
@@ -53,8 +53,15 @@ def home():
 
 @app.route("/page/<query>")
 def page(query):
-    page = wikipedia.page(query)
-    return render_template("page.html")
+    try:
+        s = wikipedia.page(query)
+        print("arama")
+        page = Page(s.title, s.content)
+        print("sayfa")
+    except:
+        flash("Something went wrong!", "warning")
+        return redirect(url_for("home"))
+    return render_template("page.html", page=page.toDict())
 
 @app.errorhandler(404)
 def page_not_found(error):

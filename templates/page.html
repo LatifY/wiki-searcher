@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Wiki Searcher - {{ thing }}{% endblock %}
+{% block title %}Wiki Searcher - {{ page["title"] }}{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -7,20 +7,9 @@
     </div>
 
     <div class="main">
-        <form method="GET">
-            <input name="search" id="search" type="text" placeholder="Search" value="{{ search }}" required>
-            <button id="submit" type="submit"><span class="material-icons">search</span></button>
-            <!--<br><br>
-            <label for="can_suggestion">Suggestion</label>
-            <input id="can_suggestion" name="can_suggestion" type="checkbox" {% if can_suggestion == "on" %}checked{% endif %}>-->
-        </form>
-
-        <div class="results">
-            {% if results %}
-                {% for result in results %}
-                    {% include "assets/result.html" %}
-                {% endfor %}
-            {% endif %}
+        <div class="result">
+            <a href=""><h3 class="title">{{ page["title"] }}</h3></a>
+            <h5 class="content">{{ page["content"] }}...</h5>
         </div>
     </div>
 
