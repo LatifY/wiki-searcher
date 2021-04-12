@@ -38,10 +38,10 @@ html,body{
 
 /*#region Page*/
 .page{
-    display: inline;
-    text-align: left;
-    width: 800px;
+    display: inline-block;
+    max-width:800px;
     margin: 0 auto;
+    text-align: left;
 }
 
 .page-title{
@@ -56,7 +56,6 @@ html,body{
 
 .page-title > span{
     position: relative;
-    display: inline-block;
 }
 
 .page-title > span:before, .page-title > span:after{
@@ -144,7 +143,6 @@ html,body{
     position:fixed;
     bottom: 0px;
     background: transparent;
-    height: 3.5rem;
 }
 
 
@@ -170,11 +168,14 @@ html,body{
     text-align: left;
     margin:left;
     float:left;
+    background: transparent;
 }
 
 .footerContent h5{
     padding: 0px;
     margin: 5px;
+    background: transparent;
+
 }
 
 .footerContent a:hover{
@@ -240,8 +241,8 @@ h1 > a:before {
 }
 
 .results{
-    display: inline;
-    width:800px;
+    display: inline-block;
+    max-width:800px;
     margin: 0 auto;
     margin-bottom:80px;
 }
@@ -344,6 +345,12 @@ h1 > a:before {
 }
 
 /*#region Responsive*/
+@media only screen and (max-width: 1500px){
+    .footerWrap {
+        background: white;
+    }
+}
+
 @media only screen and (max-width: 800px){
     .main .results{
         width: 400px;
@@ -356,7 +363,15 @@ h1 > a:before {
     }
 
     .main .results{
-        width: 300px;
+        width: 350px;
+    }
+
+    .main .page{
+        width: 350px;
+    }
+
+    .page-title{
+        font-size: 20px;
     }
 
     .main .results .result{

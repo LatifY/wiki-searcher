@@ -37,9 +37,6 @@ class Page:
         _dict = {"title":self.title, "content":self.content, "image":self.image}
         return _dict
 
-def a():
-    print("asdasd")
-
 class Paragraph:
     header:str
     content:str
@@ -121,7 +118,8 @@ def info(query):
         return redirect(url_for("home"))
 
 ignoreImages = ["https://upload.wikimedia.org/wikipedia/en/4/4a/Commons-logo.svg","https://upload.wikimedia.org/wikipedia/en/9/96/Symbol_category_class.svg",
-"https://upload.wikimedia.org/wikipedia/en/d/db/Symbol_list_class.svg", "https://upload.wikimedia.org/wikipedia/en/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg"
+"https://upload.wikimedia.org/wikipedia/en/d/db/Symbol_list_class.svg", "https://upload.wikimedia.org/wikipedia/en/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg",
+"https://upload.wikimedia.org/wikipedia/commons/9/98/Ambox_current_red.svg","https://upload.wikimedia.org/wikipedia/commons/8/89/Symbol_book_class2.svg",
 ]
 @app.route("/page/<query>/images")
 def images(query):
