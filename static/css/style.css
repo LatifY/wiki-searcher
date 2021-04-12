@@ -1,7 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --yellow: #ffd343;
+    --blue: #0cb3a7;
+}
+
+::selection {
+    color: white;
+    background: white;
+}
 
 * {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     text-decoration: none;
     background-color: #fff;
     outline: none;
@@ -17,16 +28,109 @@
     margin-bottom: 70px;
 }
 
-a{
+.no-theme{
+    background: transparent;
+}
+
+/*#region Page*/
+.page{
+    text-align: left;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.page-title{
+    width: 100%;
+    font-weight: 600;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--yellow);
+    background: transparent;
+}
+
+.page-title > span{
+    position: relative;
+    display: inline-block;
+}
+
+.page-title > span:before, .page-title > span:after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    border-bottom: 2px solid;
+    width: 591px; /* half of limiter*/
+    margin: 0 20px;
+}
+.page-title > span:before{
+    right: 100%;
+}
+.page-title > span:after{
+    left: 100%;
+}
+
+.content{
+    margin-top: 20px;
+}
+
+.paragraph-content{
+    white-space: pre-line;
+}
+
+.paragraph-header{
+    font-weight: 600;
+    color: var(--blue);
+}
+/*#endregion*/
+
+/*#region Tabs*/
+.tabs{
+    margin: 0 auto;
+    display: grid;
+    width: 30%;
+    overflow: hidden;
+    grid-template-rows: 30px 1fr;
+    grid-template-columns:  1fr 1fr;
+}
+
+.tab{
     transition: 300ms all;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    border-bottom:5px solid var(--yellow);
+}
+
+.tab span{
     color: black;
+    text-align: center;
+    transition: 150ms all;
 }
 
-a:hover{
-    color: white;
-    -webkit-text-stroke: 0.1px black;
+
+.tab-disabled{
+    border-bottom:3px solid #c8a121;
 }
 
+
+.tab:hover{
+    border-bottom: 5.2px solid #aa8406;
+}
+
+.tab:hover span{
+    font-size: 25px;
+}
+
+/*#endregion*/
+
+/*#region Images*/
+.content-image{
+    padding: 10px;
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+/*#endregion*/
 
 /*#region Footer*/
 .footerWrap {
@@ -87,6 +191,16 @@ a:hover{
     transition: .25s linear;
 }
 
+.container h1 a{
+    transition: 300ms all;
+    color: black;
+}
+
+.container h1 a:hover{
+    color: white;
+    -webkit-text-stroke: 3px black;
+}
+
 h1 > a:before {
     content: "";
     position: absolute;
@@ -94,7 +208,7 @@ h1 > a:before {
     height: 3px;
     bottom: 0;
     left: 0;
-    background: #0cb3a7;
+    background: var(--blue);
     visibility: hidden;
     border-radius: 5px;
     transform: scaleX(0);
@@ -116,7 +230,7 @@ h1 > a:before {
 }
 
 .results{
-    width: 600px;
+    width:800px;
     margin: 0 auto;
     margin-bottom:80px;
 }
@@ -134,29 +248,30 @@ h1 > a:before {
 
 .result .title{
     transition: 100ms all;
-    color: #0cb3a7;
+    color: var(--blue);
 }
 
 /*#endregion*/
 
 
-#search{
-  border: 2px solid #0cb3a7;
-  border-radius: 30px;
-  height: 32px;
-  font-size: 15px;
-  color: #3D3D3C;
-  font-weight: 600;
-  margin-left: 50px;
-  padding-left: 15px;
-  padding-right: 20px;
+#search{   
+    transition: 300ms all;
+    border: 2px solid var(--blue);
+    border-radius: 30px;
+    height: 32px;
+    font-size: 15px;
+    color: #3D3D3C;
+    font-weight: 600;
+    margin-left: 50px;
+    padding-left: 15px;
+    padding-right: 20px;
 }
 
 #submit{
     background-color: transparent;
     border-color: transparent;
     font-size: 18px;
-    color: #01A093;
+    color: var(--blue);
     position: relative;
     right: 44px;
     top: 6px;
@@ -217,7 +332,7 @@ h1 > a:before {
     100% {opacity: 0; display: none;}
 }
 
-/*#region Responsive-600*/
+/*#region Responsive-450-600*/
 @media only screen and (max-width: 600px) {
     .container h1{
         font-size: 60px;

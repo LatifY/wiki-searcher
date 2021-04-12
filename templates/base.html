@@ -9,6 +9,7 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/jquery.lightbox.min.css') }}">
     <link rel='shortcut icon' type='image/x-icon' href='{{ url_for('static', filename='favicon.ico') }}'/>
 
     <!--Lottie Files-->
@@ -17,13 +18,16 @@
     <!--Google Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--Bootstrap
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">-->
+    <!--JQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     {% include "assets/messages.html" %}
     <div id="page-container">
         <div id="content-wrap">
+            <div class="container">
+                <h1><a href="{{ url_for("home") }}">Wiki Searcher</a></h1>
+            </div>
             {% block content %}
             {% endblock %}
         </div>
@@ -32,5 +36,6 @@
 
 
     <script src="{{ url_for("static", filename="js/index.js") }}"></script>
+    <script src="{{ url_for("static", filename="js/jquery.lightbox.less") }}"></script>
 </body>
 </html>

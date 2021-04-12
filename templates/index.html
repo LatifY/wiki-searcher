@@ -2,17 +2,10 @@
 {% block title %}Wiki Searcher - Search{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1><a href="{{ url_for("home") }}">Wiki Searcher</a></h1>
-    </div>
-
     <div class="main">
         <form method="GET">
             <input name="search" id="search" type="text" placeholder="Search" value="{{ search }}" required>
             <button id="submit" type="submit"><span class="material-icons">search</span></button>
-            <!--<br><br>
-            <label for="can_suggestion">Suggestion</label>
-            <input id="can_suggestion" name="can_suggestion" type="checkbox" {% if can_suggestion == "on" %}checked{% endif %}>-->
         </form>
 
         <div class="results">

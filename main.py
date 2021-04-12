@@ -1,6 +1,14 @@
 from flask import Flask, url_for, render_template, request, redirect, flash
 import wikipedia
 import os
+import warnings
+wikipedia.BeautifulSoup(features="lxml")
+
+warnings.catch_warnings()
+
+warnings.simplefilter("ignore")
+
+#wikipedia.set_lang("tr")
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "key"
@@ -31,6 +39,44 @@ class Page:
         _dict = {"title":self.title, "content":self.content, "image":self.image}
         return _dict
 
+class Paragraph:
+    header:str
+    content:str
+
+    def __init__(self,header="",content=""):
+        self.header = header
+        self.content = content
+
+    def toDict(self):
+        _dict = {"header":self.header, "content":self.content}
+
+#Methods=======
+def prefix(text, whatToChange, change_prefix):
+    for change in whatToChange:
+        text = text.replace(change, change_prefix)
+    return text
+
+def find_tags(text, _prefix):
+    tag = False
+    tags = []
+    tagname = ""
+    for i in range(len(text)):
+        char = text[i]
+        if char == _prefix:
+            if tag == False:
+                tag = True
+            else:
+                if tagname != "": tags.append(tagname.strip())
+                tagname = ""
+                tag = False
+        else:
+            if tag == True:
+                if char != "" and char != "\n":
+                    tagname += char
+    return tags
+#Methods=======
+
+
 @app.route("/", methods=["GET","POST"])
 def home():
     if(request.method == "GET" and request.args.get("search") != None):
@@ -53,15 +99,47 @@ def home():
 
 @app.route("/page/<query>")
 def page(query):
+    if "." in query:
+        query = query.replace(".","")
+    return redirect(url_for("info",query=query))
+            
+@app.route("/page/<query>/info")
+def info(query):
+    if "." in query:
+        query = query.replace(".","")
     try:
         s = wikipedia.page(query)
-        print("arama")
-        page = Page(s.title, s.content)
-        print("sayfa")
+        text = s.content
+        text = text.replace(".\n",".\n\n")
+        text = text.replace("?\n","?\n\n")
+        text = text.replace("!\n","!\n\n")
+        page = Page(s.title, text)
+        return render_template("page.html", page=page.toDict())
+    except wikipedia.exceptions.DisambiguationError as e:
+        flash("Something went wrong!", "warning")
+        return redirect(url_for("home"))
+
+ignoreImages = ["https://upload.wikimedia.org/wikipedia/en/4/4a/Commons-logo.svg","https://upload.wikimedia.org/wikipedia/en/9/96/Symbol_category_class.svg",
+"https://upload.wikimedia.org/wikipedia/en/d/db/Symbol_list_class.svg", "https://upload.wikimedia.org/wikipedia/en/8/8a/OOjs_UI_icon_edit-ltr-progressive.svg"
+]
+@app.route("/page/<query>/images")
+def images(query):
+    if "." in query:
+        query = query.replace(".","")
+    try:
+        s = wikipedia.page(query)
+        images = s.images
+        for i in ignoreImages:
+            if i in images:images.pop(images.index(i))
+        for x in images:
+            if images.count(x) > 1:
+                for y in range(images.count(x) - 1):
+                    images.pop(images.index(x))
+        page = Page(s.title,"")
+        return render_template("page.html", page=page.toDict() ,images=images)
     except:
         flash("Something went wrong!", "warning")
         return redirect(url_for("home"))
-    return render_template("page.html", page=page.toDict())
 
 @app.errorhandler(404)
 def page_not_found(error):

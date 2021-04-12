@@ -2,14 +2,29 @@
 {% block title %}Wiki Searcher - {{ page["title"] }}{% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1><a href="{{ url_for("home") }}">Wiki Searcher</a></h1>
-    </div>
+    <div class="page">
+        <a href="{{ url_for('page', query=page['title']) }}"><h2 class="page-title"><span class="no-theme">{{ page["title"] }}</span></h2></a>
+        <div class="tabs">
+            {% if images|length == 0 %}
+                <a href="{{ url_for('info', query=page['title']) }}" class="tab no-theme"><span class="material-icons">feed</span></a>
+                <a href="{{ url_for('images', query=page['title']) }}" class="tab no-theme tab-disabled"><span class="material-icons">crop_original</span></a>
+            {% else %}
+                <a href="{{ url_for('info', query=page['title']) }}" class="tab no-theme tab-disabled"><span class="material-icons">feed</span></a>
+                <a href="{{ url_for('images', query=page['title']) }}" class="tab no-theme"><span class="material-icons">crop_original</span></a>
+            {% endif %}
 
-    <div class="main">
-        <div class="result">
-            <a href=""><h3 class="title">{{ page["title"] }}</h3></a>
-            <h5 class="content">{{ page["content"] }}...</h5>
+        </div>
+        <div class="content">
+            {% if images|length == 0 %}
+                <p class="paragraph">
+                    <h4 class="paragraph-header">{{ page["title"] }}</h4>
+                    <h5 class="paragraph-content">{{ page["content"] }}</h5>
+                </p>
+            {% else %}
+                {% for i in images %}
+                    <a href="{{ i }}"><img class="content-image no-theme" src="{{ i }}" alt="Image"></a>
+                {% endfor %}
+            {% endif %}
         </div>
     </div>
 

@@ -2,9 +2,9 @@
     {% if messages %}
         {% for cat, msg in messages %}
             {% if cat == "info" %}
-                <div class="info-message">{{ msg }}</div>
+                <div class="info-message no-theme">{{ msg }}</div>
             {% elif cat == "warning" %}
-                <div class="warning-message">{{ msg }}</div>
+                <div class="warning-message no-theme">{{ msg }}</div>
             {% endif %}
         {% endfor %}
     {% endif %}
