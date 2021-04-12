@@ -37,6 +37,9 @@ class Page:
         _dict = {"title":self.title, "content":self.content, "image":self.image}
         return _dict
 
+def a():
+    print("asdasd")
+
 class Paragraph:
     header:str
     content:str
@@ -48,7 +51,7 @@ class Paragraph:
     def toDict(self):
         _dict = {"header":self.header, "content":self.content}
 
-#Methods=======
+#region Methods
 def prefix(text, whatToChange, change_prefix):
     for change in whatToChange:
         text = text.replace(change, change_prefix)
@@ -72,7 +75,7 @@ def find_tags(text, _prefix):
                 if char != "" and char != "\n":
                     tagname += char
     return tags
-#Methods=======
+#endregion Methods
 
 
 @app.route("/", methods=["GET","POST"])

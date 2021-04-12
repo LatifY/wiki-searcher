@@ -32,6 +32,8 @@ function darkmode() {
   sessionStorage.setItem("mode", "dark");
 }
 
+
+
 function lightmode() {
   document.getElementById("html").style.filter = "invert(1)";
 

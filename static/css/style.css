@@ -12,7 +12,6 @@
 
 html,body{
     overflow-x: hidden;
-    overflow-y: hidden;
 }
 
 * {
@@ -39,6 +38,7 @@ html,body{
 
 /*#region Page*/
 .page{
+    display: inline;
     text-align: left;
     width: 800px;
     margin: 0 auto;
@@ -75,6 +75,7 @@ html,body{
 }
 
 .content{
+    width: 100%;
     margin-top: 20px;
 }
 
@@ -180,6 +181,10 @@ html,body{
     text-decoration: underline;
     text-decoration-thickness: 2px;
 }
+
+.heart{
+    color: rgb(224, 3, 3);
+}
 /*#endregion Footer*/
 
 /*#region Container*/
@@ -235,6 +240,7 @@ h1 > a:before {
 }
 
 .results{
+    display: inline;
     width:800px;
     margin: 0 auto;
     margin-bottom:80px;
@@ -244,7 +250,7 @@ h1 > a:before {
     margin-top: 50px;
     text-align: left;
     width: 100%;
-    height: 50px;
+    height: 80px;
 }
 
 .results .result{
@@ -337,14 +343,20 @@ h1 > a:before {
     100% {opacity: 0; display: none;}
 }
 
-/*#region Responsive-450-600*/
+/*#region Responsive*/
+@media only screen and (max-width: 800px){
+    .main .results{
+        width: 400px;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .container h1{
         font-size: 60px;
     }
 
     .main .results{
-        width: 310px;
+        width: 300px;
     }
 
     .main .results .result{
@@ -357,14 +369,20 @@ h1 > a:before {
 
 }
 
-@media only screen and (max-width: 450px){
+@media only screen and (max-width: 540px){
     .container h1{
         font-size: 40px;
     }
     
-    .footerWrap{
+    .footerContent h5{
+        font-size: 10px;
+    }
+
+    #search{
+        height: 26px;
         font-size: 13px;
+        margin-left: 50px;
     }
     
 }
-/*#endregion Responsive-600*/
+/*#endregion Responsive*/
