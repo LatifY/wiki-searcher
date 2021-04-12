@@ -9,7 +9,6 @@
     <title>{% block title %}{% endblock %}</title>
 
     <link rel="stylesheet" type = "text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='js/jquery.lightbox.min.css') }}">
     <link rel='shortcut icon' type='image/x-icon' href='{{ url_for('static', filename='favicon.ico') }}'/>
 
     <!--Lottie Files-->
@@ -18,8 +17,6 @@
     <!--Google Icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--JQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     {% include "assets/messages.html" %}
@@ -36,6 +33,5 @@
 
 
     <script src="{{ url_for("static", filename="js/index.js") }}"></script>
-    <script src="{{ url_for("static", filename="js/jquery.lightbox.less") }}"></script>
 </body>
 </html>
