@@ -2,10 +2,8 @@ from flask import Flask, url_for, render_template, request, redirect, flash
 import wikipedia
 import os
 import warnings
-wikipedia.BeautifulSoup(features="lxml")
 
 warnings.catch_warnings()
-
 warnings.simplefilter("ignore")
 
 #wikipedia.set_lang("tr")
